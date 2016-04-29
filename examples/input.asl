@@ -128,7 +128,45 @@ debug("main.cc");
 
 
 
+/*
 
+Output for the above script:
+----------------------------
+
+>> hola
+>> hola moto
+>> true
+>> 123
+>> 10
+>> -1
+>> 25
+>> 1
+>> 2
+>> {"a":1,"b":"a string"}
+>> [1,2,3]
+>> null
+>> x as a function
+>> i am an anonymous function
+>> 120
+>> Jon Doe
+>> [{"foo":{"name":"Jon Doe","tickets":[5,10,15,20]},"bar":[]},-500,false]
+>> [{"foo":{"name":"Jon Doe","tickets":[5,10,15,20]},"bar":[]},-500,false,3,4]
+>> 4
+>> 20
+>> {"foo":{"name":"Jon Doe","tickets":[5,10,15,20]},"bar":[]}
+>> -500
+>> false
+>> 3
+>> 4
+>> eat pizza now!
+>> eat chips now!
+>> eat whale now!
+>> onDebugOutput function set
+>> onAppOutputCall function set
+>> onExecStateChangeCall function set
+>> starting debug session
+
+*/
 
 
 
