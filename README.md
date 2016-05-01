@@ -128,7 +128,7 @@ write(x);
 >> 20
 ```
 
-In case you want to iterate through all elements in an array, use the for-in loop
+In case you want to iterate through all elements in an array, use the `for-in` loop
 ```javascript
 for elem in arr {
   write(elem);
@@ -140,8 +140,8 @@ for elem in arr {
 >> 4
 ```
 
-There's also the traditional 'while' loop. It uses boolean expressions to evaluate the condition. Available bool operators are 'not', 'and', 'or'.
-Number comparisons can also evaluate the condition ('==', '!=', '<', '>', '<=', '>=')
+There's also the traditional `while` loop. It uses boolean expressions to evaluate the condition. Available bool operators are `not`, `and`, `or`.
+Number comparisons can also evaluate the condition (`==`, `!=`, `<`, `>`, `<=`, `>=`)
 ```javascript
 i = 0;
 food = [ "pizza", "chips", "whale" ];
@@ -156,7 +156,7 @@ while hungry {
 >> eat whale now!
 ```
 
-If-elsif-else statements
+`If-elsif-else` statements
 ```javascript
 sat = 0;
 if not true {
@@ -210,7 +210,7 @@ debug("main.cc");
 GdbScript will take care of the compilation, and report any errors that may have occurred. If compilation was successful, GdbScript will start the debug, and stop at the beginning of your `main` method.
 
 Messages from the debugger will be prefixed with a `+` if they are info; errors will come prefixed with an `*`, and application output with a `~`.
-```javascript
+```
 >> + this is info
 >> * this is an error
 >> ~ this is output comping from the program you're debugging
@@ -321,5 +321,5 @@ node run.js
 ```
 You can now run your own GdbScript code!
 
-You may want to have a look at the [examples](https://github.com/llop/GdbScript/blob/master/) for some sample code.
+You may want to have a look at the [examples](https://github.com/llop/GdbScript/blob/master/examples) for some sample code.
 
