@@ -380,30 +380,66 @@ gdbListener.prototype.exitOnDebugOutputCall = function(ctx) {
 };
 
 
-// Enter a parse tree produced by gdbParser#OnAppOutputCall.
-gdbListener.prototype.enterOnAppOutputCall = function(ctx) {
+// Enter a parse tree produced by gdbParser#DbgRunCall.
+gdbListener.prototype.enterDbgRunCall = function(ctx) {
 };
 
-// Exit a parse tree produced by gdbParser#OnAppOutputCall.
-gdbListener.prototype.exitOnAppOutputCall = function(ctx) {
-};
-
-
-// Enter a parse tree produced by gdbParser#OnExecStateChangeCall.
-gdbListener.prototype.enterOnExecStateChangeCall = function(ctx) {
-};
-
-// Exit a parse tree produced by gdbParser#OnExecStateChangeCall.
-gdbListener.prototype.exitOnExecStateChangeCall = function(ctx) {
+// Exit a parse tree produced by gdbParser#DbgRunCall.
+gdbListener.prototype.exitDbgRunCall = function(ctx) {
 };
 
 
-// Enter a parse tree produced by gdbParser#DebugCall.
-gdbListener.prototype.enterDebugCall = function(ctx) {
+// Enter a parse tree produced by gdbParser#DbgStopCall.
+gdbListener.prototype.enterDbgStopCall = function(ctx) {
 };
 
-// Exit a parse tree produced by gdbParser#DebugCall.
-gdbListener.prototype.exitDebugCall = function(ctx) {
+// Exit a parse tree produced by gdbParser#DbgStopCall.
+gdbListener.prototype.exitDbgStopCall = function(ctx) {
+};
+
+
+// Enter a parse tree produced by gdbParser#DbgPauseCall.
+gdbListener.prototype.enterDbgPauseCall = function(ctx) {
+};
+
+// Exit a parse tree produced by gdbParser#DbgPauseCall.
+gdbListener.prototype.exitDbgPauseCall = function(ctx) {
+};
+
+
+// Enter a parse tree produced by gdbParser#DbgContCall.
+gdbListener.prototype.enterDbgContCall = function(ctx) {
+};
+
+// Exit a parse tree produced by gdbParser#DbgContCall.
+gdbListener.prototype.exitDbgContCall = function(ctx) {
+};
+
+
+// Enter a parse tree produced by gdbParser#DbgBreakInsCall.
+gdbListener.prototype.enterDbgBreakInsCall = function(ctx) {
+};
+
+// Exit a parse tree produced by gdbParser#DbgBreakInsCall.
+gdbListener.prototype.exitDbgBreakInsCall = function(ctx) {
+};
+
+
+// Enter a parse tree produced by gdbParser#DbgBreakRemCall.
+gdbListener.prototype.enterDbgBreakRemCall = function(ctx) {
+};
+
+// Exit a parse tree produced by gdbParser#DbgBreakRemCall.
+gdbListener.prototype.exitDbgBreakRemCall = function(ctx) {
+};
+
+
+// Enter a parse tree produced by gdbParser#DbgVarsCall.
+gdbListener.prototype.enterDbgVarsCall = function(ctx) {
+};
+
+// Exit a parse tree produced by gdbParser#DbgVarsCall.
+gdbListener.prototype.exitDbgVarsCall = function(ctx) {
 };
 
 

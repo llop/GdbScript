@@ -7,7 +7,7 @@ var gdbVisitor = require('./gdbVisitor').gdbVisitor;
 var grammarFileName = "gdb.g4";
 
 var serializedATN = ["\u0003\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd",
-    "\u00031\u012a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u00035\u0136\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
     "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
     "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
@@ -49,159 +49,169 @@ var serializedATN = ["\u0003\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd",
     "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017",
     "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017",
     "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017",
+    "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017",
+    "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017",
     "\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0005\u0017",
-    "\u011e\n\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003",
-    "\u0017\u0005\u0017\u0125\n\u0017\u0003\u0017\u0005\u0017\u0128\n\u0017",
+    "\u012a\n\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003\u0017\u0003",
+    "\u0017\u0005\u0017\u0131\n\u0017\u0003\u0017\u0005\u0017\u0134\n\u0017",
     "\u0003\u0017\u0002\u0002\u0018\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012",
     "\u0014\u0016\u0018\u001a\u001c\u001e \"$&(*,\u0002\u0007\u0003\u0002",
-    "\u0013\u0018\u0003\u0002\u0019\u001a\u0003\u0002\u001b\u001d\u0004\u0002",
-    "\u0019\u001a\u001e\u001e\u0003\u0002+,\u0141\u0002/\u0003\u0002\u0002",
-    "\u0002\u00047\u0003\u0002\u0002\u0002\u00069\u0003\u0002\u0002\u0002",
-    "\b@\u0003\u0002\u0002\u0002\nF\u0003\u0002\u0002\u0002\fO\u0003\u0002",
-    "\u0002\u0002\u000ep\u0003\u0002\u0002\u0002\u0010r\u0003\u0002\u0002",
-    "\u0002\u0012\u0089\u0003\u0002\u0002\u0002\u0014\u0091\u0003\u0002\u0002",
-    "\u0002\u0016\u0099\u0003\u0002\u0002\u0002\u0018\u009e\u0003\u0002\u0002",
-    "\u0002\u001a\u00a7\u0003\u0002\u0002\u0002\u001c\u00a9\u0003\u0002\u0002",
-    "\u0002\u001e\u00b2\u0003\u0002\u0002\u0002 \u00b5\u0003\u0002\u0002",
-    "\u0002\"\u00b9\u0003\u0002\u0002\u0002$\u00cb\u0003\u0002\u0002\u0002",
-    "&\u00ee\u0003\u0002\u0002\u0002(\u00f0\u0003\u0002\u0002\u0002*\u00f8",
-    "\u0003\u0002\u0002\u0002,\u0127\u0003\u0002\u0002\u0002.0\u0005\u0004",
-    "\u0003\u0002/.\u0003\u0002\u0002\u000201\u0003\u0002\u0002\u00021/\u0003",
-    "\u0002\u0002\u000212\u0003\u0002\u0002\u000223\u0003\u0002\u0002\u0002",
-    "34\u0007\u0002\u0002\u00034\u0003\u0003\u0002\u0002\u000258\u0005\u0006",
-    "\u0004\u000268\u0005\f\u0007\u000275\u0003\u0002\u0002\u000276\u0003",
-    "\u0002\u0002\u00028\u0005\u0003\u0002\u0002\u00029:\u0007(\u0002\u0002",
-    ":;\u0007-\u0002\u0002;<\u0005\b\u0005\u0002<=\u0007\u0003\u0002\u0002",
-    "=>\u0005\f\u0007\u0002>?\u0007\u0004\u0002\u0002?\u0007\u0003\u0002",
-    "\u0002\u0002@B\u0007\u0005\u0002\u0002AC\u0005\n\u0006\u0002BA\u0003",
-    "\u0002\u0002\u0002BC\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002",
-    "DE\u0007\u0006\u0002\u0002E\t\u0003\u0002\u0002\u0002FK\u0007-\u0002",
-    "\u0002GH\u0007\u0007\u0002\u0002HJ\u0007-\u0002\u0002IG\u0003\u0002",
-    "\u0002\u0002JM\u0003\u0002\u0002\u0002KI\u0003\u0002\u0002\u0002KL\u0003",
-    "\u0002\u0002\u0002L\u000b\u0003\u0002\u0002\u0002MK\u0003\u0002\u0002",
-    "\u0002NP\u0005\u000e\b\u0002ON\u0003\u0002\u0002\u0002PQ\u0003\u0002",
-    "\u0002\u0002QO\u0003\u0002\u0002\u0002QR\u0003\u0002\u0002\u0002R\r",
-    "\u0003\u0002\u0002\u0002ST\u0007-\u0002\u0002TU\u0007\u0012\u0002\u0002",
-    "UV\u0005\u0012\n\u0002VW\u0007\b\u0002\u0002Wq\u0003\u0002\u0002\u0002",
-    "Xq\u0005\u0010\t\u0002YZ\u0007%\u0002\u0002Z[\u0005\u0012\n\u0002[\\",
-    "\u0007\u0003\u0002\u0002\\]\u0005\f\u0007\u0002]^\u0007\u0004\u0002",
-    "\u0002^q\u0003\u0002\u0002\u0002_`\u0007&\u0002\u0002`a\u0007-\u0002",
-    "\u0002ab\u0007\'\u0002\u0002bc\u0005\u0012\n\u0002cd\u0007\u0003\u0002",
-    "\u0002de\u0005\f\u0007\u0002ef\u0007\u0004\u0002\u0002fq\u0003\u0002",
-    "\u0002\u0002gh\u0005,\u0017\u0002hi\u0007\b\u0002\u0002iq\u0003\u0002",
-    "\u0002\u0002jl\u0007*\u0002\u0002km\u0005\u0012\n\u0002lk\u0003\u0002",
-    "\u0002\u0002lm\u0003\u0002\u0002\u0002mn\u0003\u0002\u0002\u0002nq\u0007",
-    "\b\u0002\u0002oq\u0007\b\u0002\u0002pS\u0003\u0002\u0002\u0002pX\u0003",
-    "\u0002\u0002\u0002pY\u0003\u0002\u0002\u0002p_\u0003\u0002\u0002\u0002",
-    "pg\u0003\u0002\u0002\u0002pj\u0003\u0002\u0002\u0002po\u0003\u0002\u0002",
-    "\u0002q\u000f\u0003\u0002\u0002\u0002rs\u0007\"\u0002\u0002st\u0005",
-    "\u0012\n\u0002tu\u0007\u0003\u0002\u0002u~\u0005\f\u0007\u0002vw\u0007",
-    "\u0004\u0002\u0002wx\u0007#\u0002\u0002xy\u0005\u0012\n\u0002yz\u0007",
-    "\u0003\u0002\u0002z{\u0005\f\u0007\u0002{}\u0003\u0002\u0002\u0002|",
-    "v\u0003\u0002\u0002\u0002}\u0080\u0003\u0002\u0002\u0002~|\u0003\u0002",
-    "\u0002\u0002~\u007f\u0003\u0002\u0002\u0002\u007f\u0085\u0003\u0002",
-    "\u0002\u0002\u0080~\u0003\u0002\u0002\u0002\u0081\u0082\u0007\u0004",
-    "\u0002\u0002\u0082\u0083\u0007$\u0002\u0002\u0083\u0084\u0007\u0003",
-    "\u0002\u0002\u0084\u0086\u0005\f\u0007\u0002\u0085\u0081\u0003\u0002",
-    "\u0002\u0002\u0085\u0086\u0003\u0002\u0002\u0002\u0086\u0087\u0003\u0002",
-    "\u0002\u0002\u0087\u0088\u0007\u0004\u0002\u0002\u0088\u0011\u0003\u0002",
-    "\u0002\u0002\u0089\u008e\u0005\u0014\u000b\u0002\u008a\u008b\u0007 ",
-    "\u0002\u0002\u008b\u008d\u0005\u0014\u000b\u0002\u008c\u008a\u0003\u0002",
-    "\u0002\u0002\u008d\u0090\u0003\u0002\u0002\u0002\u008e\u008c\u0003\u0002",
-    "\u0002\u0002\u008e\u008f\u0003\u0002\u0002\u0002\u008f\u0013\u0003\u0002",
-    "\u0002\u0002\u0090\u008e\u0003\u0002\u0002\u0002\u0091\u0096\u0005\u0016",
-    "\f\u0002\u0092\u0093\u0007\u001f\u0002\u0002\u0093\u0095\u0005\u0016",
-    "\f\u0002\u0094\u0092\u0003\u0002\u0002\u0002\u0095\u0098\u0003\u0002",
-    "\u0002\u0002\u0096\u0094\u0003\u0002\u0002\u0002\u0096\u0097\u0003\u0002",
-    "\u0002\u0002\u0097\u0015\u0003\u0002\u0002\u0002\u0098\u0096\u0003\u0002",
-    "\u0002\u0002\u0099\u009c\u0005\u0018\r\u0002\u009a\u009b\t\u0002\u0002",
-    "\u0002\u009b\u009d\u0005\u0018\r\u0002\u009c\u009a\u0003\u0002\u0002",
-    "\u0002\u009c\u009d\u0003\u0002\u0002\u0002\u009d\u0017\u0003\u0002\u0002",
-    "\u0002\u009e\u00a4\u0005\u001c\u000f\u0002\u009f\u00a0\u0005\u001a\u000e",
-    "\u0002\u00a0\u00a1\u0005\u001c\u000f\u0002\u00a1\u00a3\u0003\u0002\u0002",
-    "\u0002\u00a2\u009f\u0003\u0002\u0002\u0002\u00a3\u00a6\u0003\u0002\u0002",
-    "\u0002\u00a4\u00a2\u0003\u0002\u0002\u0002\u00a4\u00a5\u0003\u0002\u0002",
-    "\u0002\u00a5\u0019\u0003\u0002\u0002\u0002\u00a6\u00a4\u0003\u0002\u0002",
-    "\u0002\u00a7\u00a8\t\u0003\u0002\u0002\u00a8\u001b\u0003\u0002\u0002",
-    "\u0002\u00a9\u00af\u0005 \u0011\u0002\u00aa\u00ab\u0005\u001e\u0010",
-    "\u0002\u00ab\u00ac\u0005 \u0011\u0002\u00ac\u00ae\u0003\u0002\u0002",
-    "\u0002\u00ad\u00aa\u0003\u0002\u0002\u0002\u00ae\u00b1\u0003\u0002\u0002",
-    "\u0002\u00af\u00ad\u0003\u0002\u0002\u0002\u00af\u00b0\u0003\u0002\u0002",
-    "\u0002\u00b0\u001d\u0003\u0002\u0002\u0002\u00b1\u00af\u0003\u0002\u0002",
-    "\u0002\u00b2\u00b3\t\u0004\u0002\u0002\u00b3\u001f\u0003\u0002\u0002",
-    "\u0002\u00b4\u00b6\t\u0005\u0002\u0002\u00b5\u00b4\u0003\u0002\u0002",
-    "\u0002\u00b5\u00b6\u0003\u0002\u0002\u0002\u00b6\u00b7\u0003\u0002\u0002",
-    "\u0002\u00b7\u00b8\u0005\"\u0012\u0002\u00b8!\u0003\u0002\u0002\u0002",
-    "\u00b9\u00bd\u0005&\u0014\u0002\u00ba\u00bc\u0005$\u0013\u0002\u00bb",
-    "\u00ba\u0003\u0002\u0002\u0002\u00bc\u00bf\u0003\u0002\u0002\u0002\u00bd",
-    "\u00bb\u0003\u0002\u0002\u0002\u00bd\u00be\u0003\u0002\u0002\u0002\u00be",
-    "#\u0003\u0002\u0002\u0002\u00bf\u00bd\u0003\u0002\u0002\u0002\u00c0",
-    "\u00c1\u0007\t\u0002\u0002\u00c1\u00cc\u0007-\u0002\u0002\u00c2\u00c3",
-    "\u0007\n\u0002\u0002\u00c3\u00c4\u0005\u0012\n\u0002\u00c4\u00c5\u0007",
-    "\u000b\u0002\u0002\u00c5\u00cc\u0003\u0002\u0002\u0002\u00c6\u00c8\u0007",
-    "\u0005\u0002\u0002\u00c7\u00c9\u0005(\u0015\u0002\u00c8\u00c7\u0003",
-    "\u0002\u0002\u0002\u00c8\u00c9\u0003\u0002\u0002\u0002\u00c9\u00ca\u0003",
-    "\u0002\u0002\u0002\u00ca\u00cc\u0007\u0006\u0002\u0002\u00cb\u00c0\u0003",
-    "\u0002\u0002\u0002\u00cb\u00c2\u0003\u0002\u0002\u0002\u00cb\u00c6\u0003",
-    "\u0002\u0002\u0002\u00cc%\u0003\u0002\u0002\u0002\u00cd\u00ce\u0007",
-    "\u0005\u0002\u0002\u00ce\u00cf\u0005\u0012\n\u0002\u00cf\u00d0\u0007",
-    "\u0006\u0002\u0002\u00d0\u00ef\u0003\u0002\u0002\u0002\u00d1\u00ef\u0007",
-    ".\u0002\u0002\u00d2\u00ef\t\u0006\u0002\u0002\u00d3\u00ef\u00070\u0002",
-    "\u0002\u00d4\u00ef\u0007!\u0002\u0002\u00d5\u00ef\u0007)\u0002\u0002",
-    "\u00d6\u00d8\u0007\n\u0002\u0002\u00d7\u00d9\u0005(\u0015\u0002\u00d8",
-    "\u00d7\u0003\u0002\u0002\u0002\u00d8\u00d9\u0003\u0002\u0002\u0002\u00d9",
-    "\u00da\u0003\u0002\u0002\u0002\u00da\u00ef\u0007\u000b\u0002\u0002\u00db",
-    "\u00e4\u0007\u0003\u0002\u0002\u00dc\u00e1\u0005*\u0016\u0002\u00dd",
-    "\u00de\u0007\u0007\u0002\u0002\u00de\u00e0\u0005*\u0016\u0002\u00df",
-    "\u00dd\u0003\u0002\u0002\u0002\u00e0\u00e3\u0003\u0002\u0002\u0002\u00e1",
-    "\u00df\u0003\u0002\u0002\u0002\u00e1\u00e2\u0003\u0002\u0002\u0002\u00e2",
-    "\u00e5\u0003\u0002\u0002\u0002\u00e3\u00e1\u0003\u0002\u0002\u0002\u00e4",
-    "\u00dc\u0003\u0002\u0002\u0002\u00e4\u00e5\u0003\u0002\u0002\u0002\u00e5",
-    "\u00e6\u0003\u0002\u0002\u0002\u00e6\u00ef\u0007\u0004\u0002\u0002\u00e7",
-    "\u00e8\u0007(\u0002\u0002\u00e8\u00e9\u0005\b\u0005\u0002\u00e9\u00ea",
-    "\u0007\u0003\u0002\u0002\u00ea\u00eb\u0005\f\u0007\u0002\u00eb\u00ec",
-    "\u0007\u0004\u0002\u0002\u00ec\u00ef\u0003\u0002\u0002\u0002\u00ed\u00ef",
-    "\u0007-\u0002\u0002\u00ee\u00cd\u0003\u0002\u0002\u0002\u00ee\u00d1",
-    "\u0003\u0002\u0002\u0002\u00ee\u00d2\u0003\u0002\u0002\u0002\u00ee\u00d3",
-    "\u0003\u0002\u0002\u0002\u00ee\u00d4\u0003\u0002\u0002\u0002\u00ee\u00d5",
-    "\u0003\u0002\u0002\u0002\u00ee\u00d6\u0003\u0002\u0002\u0002\u00ee\u00db",
-    "\u0003\u0002\u0002\u0002\u00ee\u00e7\u0003\u0002\u0002\u0002\u00ee\u00ed",
-    "\u0003\u0002\u0002\u0002\u00ef\'\u0003\u0002\u0002\u0002\u00f0\u00f5",
-    "\u0005\u0012\n\u0002\u00f1\u00f2\u0007\u0007\u0002\u0002\u00f2\u00f4",
-    "\u0005\u0012\n\u0002\u00f3\u00f1\u0003\u0002\u0002\u0002\u00f4\u00f7",
-    "\u0003\u0002\u0002\u0002\u00f5\u00f3\u0003\u0002\u0002\u0002\u00f5\u00f6",
-    "\u0003\u0002\u0002\u0002\u00f6)\u0003\u0002\u0002\u0002\u00f7\u00f5",
-    "\u0003\u0002\u0002\u0002\u00f8\u00f9\u0007-\u0002\u0002\u00f9\u00fa",
-    "\u0007\f\u0002\u0002\u00fa\u00fb\u0005\u0012\n\u0002\u00fb+\u0003\u0002",
-    "\u0002\u0002\u00fc\u00fd\u0007\r\u0002\u0002\u00fd\u00ff\u0007\u0005",
-    "\u0002\u0002\u00fe\u0100\u0005\u0012\n\u0002\u00ff\u00fe\u0003\u0002",
-    "\u0002\u0002\u00ff\u0100\u0003\u0002\u0002\u0002\u0100\u0101\u0003\u0002",
-    "\u0002\u0002\u0101\u0128\u0007\u0006\u0002\u0002\u0102\u0103\u0007\u000e",
-    "\u0002\u0002\u0103\u0104\u0007\u0005\u0002\u0002\u0104\u0105\u0005\u0012",
-    "\n\u0002\u0105\u0106\u0007\u0006\u0002\u0002\u0106\u0128\u0003\u0002",
-    "\u0002\u0002\u0107\u0108\u0007\u000f\u0002\u0002\u0108\u0109\u0007\u0005",
-    "\u0002\u0002\u0109\u010a\u0005\u0012\n\u0002\u010a\u010b\u0007\u0006",
-    "\u0002\u0002\u010b\u0128\u0003\u0002\u0002\u0002\u010c\u010d\u0007\u0010",
-    "\u0002\u0002\u010d\u010e\u0007\u0005\u0002\u0002\u010e\u010f\u0005\u0012",
-    "\n\u0002\u010f\u0110\u0007\u0006\u0002\u0002\u0110\u0128\u0003\u0002",
-    "\u0002\u0002\u0111\u0112\u0007\u0011\u0002\u0002\u0112\u0113\u0007\u0005",
-    "\u0002\u0002\u0113\u0114\u0005\u0012\n\u0002\u0114\u0115\u0007\u0006",
-    "\u0002\u0002\u0115\u0128\u0003\u0002\u0002\u0002\u0116\u0117\u0007(",
-    "\u0002\u0002\u0117\u0118\u0005\b\u0005\u0002\u0118\u0119\u0007\u0003",
-    "\u0002\u0002\u0119\u011a\u0005\f\u0007\u0002\u011a\u011b\u0007\u0004",
-    "\u0002\u0002\u011b\u011d\u0007\u0005\u0002\u0002\u011c\u011e\u0005(",
-    "\u0015\u0002\u011d\u011c\u0003\u0002\u0002\u0002\u011d\u011e\u0003\u0002",
-    "\u0002\u0002\u011e\u011f\u0003\u0002\u0002\u0002\u011f\u0120\u0007\u0006",
-    "\u0002\u0002\u0120\u0128\u0003\u0002\u0002\u0002\u0121\u0122\u0007-",
-    "\u0002\u0002\u0122\u0124\u0007\u0005\u0002\u0002\u0123\u0125\u0005(",
-    "\u0015\u0002\u0124\u0123\u0003\u0002\u0002\u0002\u0124\u0125\u0003\u0002",
-    "\u0002\u0002\u0125\u0126\u0003\u0002\u0002\u0002\u0126\u0128\u0007\u0006",
-    "\u0002\u0002\u0127\u00fc\u0003\u0002\u0002\u0002\u0127\u0102\u0003\u0002",
-    "\u0002\u0002\u0127\u0107\u0003\u0002\u0002\u0002\u0127\u010c\u0003\u0002",
-    "\u0002\u0002\u0127\u0111\u0003\u0002\u0002\u0002\u0127\u0116\u0003\u0002",
-    "\u0002\u0002\u0127\u0121\u0003\u0002\u0002\u0002\u0128-\u0003\u0002",
-    "\u0002\u0002\u001d17BKQlp~\u0085\u008e\u0096\u009c\u00a4\u00af\u00b5",
-    "\u00bd\u00c8\u00cb\u00d8\u00e1\u00e4\u00ee\u00f5\u00ff\u011d\u0124\u0127"].join("");
+    "\u0017\u001c\u0003\u0002\u001d\u001e\u0003\u0002\u001f!\u0004\u0002",
+    "\u001d\u001e\"\"\u0003\u0002/0\u0151\u0002/\u0003\u0002\u0002\u0002",
+    "\u00047\u0003\u0002\u0002\u0002\u00069\u0003\u0002\u0002\u0002\b@\u0003",
+    "\u0002\u0002\u0002\nF\u0003\u0002\u0002\u0002\fO\u0003\u0002\u0002\u0002",
+    "\u000ep\u0003\u0002\u0002\u0002\u0010r\u0003\u0002\u0002\u0002\u0012",
+    "\u0089\u0003\u0002\u0002\u0002\u0014\u0091\u0003\u0002\u0002\u0002\u0016",
+    "\u0099\u0003\u0002\u0002\u0002\u0018\u009e\u0003\u0002\u0002\u0002\u001a",
+    "\u00a7\u0003\u0002\u0002\u0002\u001c\u00a9\u0003\u0002\u0002\u0002\u001e",
+    "\u00b2\u0003\u0002\u0002\u0002 \u00b5\u0003\u0002\u0002\u0002\"\u00b9",
+    "\u0003\u0002\u0002\u0002$\u00cb\u0003\u0002\u0002\u0002&\u00ee\u0003",
+    "\u0002\u0002\u0002(\u00f0\u0003\u0002\u0002\u0002*\u00f8\u0003\u0002",
+    "\u0002\u0002,\u0133\u0003\u0002\u0002\u0002.0\u0005\u0004\u0003\u0002",
+    "/.\u0003\u0002\u0002\u000201\u0003\u0002\u0002\u00021/\u0003\u0002\u0002",
+    "\u000212\u0003\u0002\u0002\u000223\u0003\u0002\u0002\u000234\u0007\u0002",
+    "\u0002\u00034\u0003\u0003\u0002\u0002\u000258\u0005\u0006\u0004\u0002",
+    "68\u0005\f\u0007\u000275\u0003\u0002\u0002\u000276\u0003\u0002\u0002",
+    "\u00028\u0005\u0003\u0002\u0002\u00029:\u0007,\u0002\u0002:;\u00071",
+    "\u0002\u0002;<\u0005\b\u0005\u0002<=\u0007\u0003\u0002\u0002=>\u0005",
+    "\f\u0007\u0002>?\u0007\u0004\u0002\u0002?\u0007\u0003\u0002\u0002\u0002",
+    "@B\u0007\u0005\u0002\u0002AC\u0005\n\u0006\u0002BA\u0003\u0002\u0002",
+    "\u0002BC\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002DE\u0007\u0006",
+    "\u0002\u0002E\t\u0003\u0002\u0002\u0002FK\u00071\u0002\u0002GH\u0007",
+    "\u0007\u0002\u0002HJ\u00071\u0002\u0002IG\u0003\u0002\u0002\u0002JM",
+    "\u0003\u0002\u0002\u0002KI\u0003\u0002\u0002\u0002KL\u0003\u0002\u0002",
+    "\u0002L\u000b\u0003\u0002\u0002\u0002MK\u0003\u0002\u0002\u0002NP\u0005",
+    "\u000e\b\u0002ON\u0003\u0002\u0002\u0002PQ\u0003\u0002\u0002\u0002Q",
+    "O\u0003\u0002\u0002\u0002QR\u0003\u0002\u0002\u0002R\r\u0003\u0002\u0002",
+    "\u0002ST\u00071\u0002\u0002TU\u0007\u0016\u0002\u0002UV\u0005\u0012",
+    "\n\u0002VW\u0007\b\u0002\u0002Wq\u0003\u0002\u0002\u0002Xq\u0005\u0010",
+    "\t\u0002YZ\u0007)\u0002\u0002Z[\u0005\u0012\n\u0002[\\\u0007\u0003\u0002",
+    "\u0002\\]\u0005\f\u0007\u0002]^\u0007\u0004\u0002\u0002^q\u0003\u0002",
+    "\u0002\u0002_`\u0007*\u0002\u0002`a\u00071\u0002\u0002ab\u0007+\u0002",
+    "\u0002bc\u0005\u0012\n\u0002cd\u0007\u0003\u0002\u0002de\u0005\f\u0007",
+    "\u0002ef\u0007\u0004\u0002\u0002fq\u0003\u0002\u0002\u0002gh\u0005,",
+    "\u0017\u0002hi\u0007\b\u0002\u0002iq\u0003\u0002\u0002\u0002jl\u0007",
+    ".\u0002\u0002km\u0005\u0012\n\u0002lk\u0003\u0002\u0002\u0002lm\u0003",
+    "\u0002\u0002\u0002mn\u0003\u0002\u0002\u0002nq\u0007\b\u0002\u0002o",
+    "q\u0007\b\u0002\u0002pS\u0003\u0002\u0002\u0002pX\u0003\u0002\u0002",
+    "\u0002pY\u0003\u0002\u0002\u0002p_\u0003\u0002\u0002\u0002pg\u0003\u0002",
+    "\u0002\u0002pj\u0003\u0002\u0002\u0002po\u0003\u0002\u0002\u0002q\u000f",
+    "\u0003\u0002\u0002\u0002rs\u0007&\u0002\u0002st\u0005\u0012\n\u0002",
+    "tu\u0007\u0003\u0002\u0002u~\u0005\f\u0007\u0002vw\u0007\u0004\u0002",
+    "\u0002wx\u0007\'\u0002\u0002xy\u0005\u0012\n\u0002yz\u0007\u0003\u0002",
+    "\u0002z{\u0005\f\u0007\u0002{}\u0003\u0002\u0002\u0002|v\u0003\u0002",
+    "\u0002\u0002}\u0080\u0003\u0002\u0002\u0002~|\u0003\u0002\u0002\u0002",
+    "~\u007f\u0003\u0002\u0002\u0002\u007f\u0085\u0003\u0002\u0002\u0002",
+    "\u0080~\u0003\u0002\u0002\u0002\u0081\u0082\u0007\u0004\u0002\u0002",
+    "\u0082\u0083\u0007(\u0002\u0002\u0083\u0084\u0007\u0003\u0002\u0002",
+    "\u0084\u0086\u0005\f\u0007\u0002\u0085\u0081\u0003\u0002\u0002\u0002",
+    "\u0085\u0086\u0003\u0002\u0002\u0002\u0086\u0087\u0003\u0002\u0002\u0002",
+    "\u0087\u0088\u0007\u0004\u0002\u0002\u0088\u0011\u0003\u0002\u0002\u0002",
+    "\u0089\u008e\u0005\u0014\u000b\u0002\u008a\u008b\u0007$\u0002\u0002",
+    "\u008b\u008d\u0005\u0014\u000b\u0002\u008c\u008a\u0003\u0002\u0002\u0002",
+    "\u008d\u0090\u0003\u0002\u0002\u0002\u008e\u008c\u0003\u0002\u0002\u0002",
+    "\u008e\u008f\u0003\u0002\u0002\u0002\u008f\u0013\u0003\u0002\u0002\u0002",
+    "\u0090\u008e\u0003\u0002\u0002\u0002\u0091\u0096\u0005\u0016\f\u0002",
+    "\u0092\u0093\u0007#\u0002\u0002\u0093\u0095\u0005\u0016\f\u0002\u0094",
+    "\u0092\u0003\u0002\u0002\u0002\u0095\u0098\u0003\u0002\u0002\u0002\u0096",
+    "\u0094\u0003\u0002\u0002\u0002\u0096\u0097\u0003\u0002\u0002\u0002\u0097",
+    "\u0015\u0003\u0002\u0002\u0002\u0098\u0096\u0003\u0002\u0002\u0002\u0099",
+    "\u009c\u0005\u0018\r\u0002\u009a\u009b\t\u0002\u0002\u0002\u009b\u009d",
+    "\u0005\u0018\r\u0002\u009c\u009a\u0003\u0002\u0002\u0002\u009c\u009d",
+    "\u0003\u0002\u0002\u0002\u009d\u0017\u0003\u0002\u0002\u0002\u009e\u00a4",
+    "\u0005\u001c\u000f\u0002\u009f\u00a0\u0005\u001a\u000e\u0002\u00a0\u00a1",
+    "\u0005\u001c\u000f\u0002\u00a1\u00a3\u0003\u0002\u0002\u0002\u00a2\u009f",
+    "\u0003\u0002\u0002\u0002\u00a3\u00a6\u0003\u0002\u0002\u0002\u00a4\u00a2",
+    "\u0003\u0002\u0002\u0002\u00a4\u00a5\u0003\u0002\u0002\u0002\u00a5\u0019",
+    "\u0003\u0002\u0002\u0002\u00a6\u00a4\u0003\u0002\u0002\u0002\u00a7\u00a8",
+    "\t\u0003\u0002\u0002\u00a8\u001b\u0003\u0002\u0002\u0002\u00a9\u00af",
+    "\u0005 \u0011\u0002\u00aa\u00ab\u0005\u001e\u0010\u0002\u00ab\u00ac",
+    "\u0005 \u0011\u0002\u00ac\u00ae\u0003\u0002\u0002\u0002\u00ad\u00aa",
+    "\u0003\u0002\u0002\u0002\u00ae\u00b1\u0003\u0002\u0002\u0002\u00af\u00ad",
+    "\u0003\u0002\u0002\u0002\u00af\u00b0\u0003\u0002\u0002\u0002\u00b0\u001d",
+    "\u0003\u0002\u0002\u0002\u00b1\u00af\u0003\u0002\u0002\u0002\u00b2\u00b3",
+    "\t\u0004\u0002\u0002\u00b3\u001f\u0003\u0002\u0002\u0002\u00b4\u00b6",
+    "\t\u0005\u0002\u0002\u00b5\u00b4\u0003\u0002\u0002\u0002\u00b5\u00b6",
+    "\u0003\u0002\u0002\u0002\u00b6\u00b7\u0003\u0002\u0002\u0002\u00b7\u00b8",
+    "\u0005\"\u0012\u0002\u00b8!\u0003\u0002\u0002\u0002\u00b9\u00bd\u0005",
+    "&\u0014\u0002\u00ba\u00bc\u0005$\u0013\u0002\u00bb\u00ba\u0003\u0002",
+    "\u0002\u0002\u00bc\u00bf\u0003\u0002\u0002\u0002\u00bd\u00bb\u0003\u0002",
+    "\u0002\u0002\u00bd\u00be\u0003\u0002\u0002\u0002\u00be#\u0003\u0002",
+    "\u0002\u0002\u00bf\u00bd\u0003\u0002\u0002\u0002\u00c0\u00c1\u0007\t",
+    "\u0002\u0002\u00c1\u00cc\u00071\u0002\u0002\u00c2\u00c3\u0007\n\u0002",
+    "\u0002\u00c3\u00c4\u0005\u0012\n\u0002\u00c4\u00c5\u0007\u000b\u0002",
+    "\u0002\u00c5\u00cc\u0003\u0002\u0002\u0002\u00c6\u00c8\u0007\u0005\u0002",
+    "\u0002\u00c7\u00c9\u0005(\u0015\u0002\u00c8\u00c7\u0003\u0002\u0002",
+    "\u0002\u00c8\u00c9\u0003\u0002\u0002\u0002\u00c9\u00ca\u0003\u0002\u0002",
+    "\u0002\u00ca\u00cc\u0007\u0006\u0002\u0002\u00cb\u00c0\u0003\u0002\u0002",
+    "\u0002\u00cb\u00c2\u0003\u0002\u0002\u0002\u00cb\u00c6\u0003\u0002\u0002",
+    "\u0002\u00cc%\u0003\u0002\u0002\u0002\u00cd\u00ce\u0007\u0005\u0002",
+    "\u0002\u00ce\u00cf\u0005\u0012\n\u0002\u00cf\u00d0\u0007\u0006\u0002",
+    "\u0002\u00d0\u00ef\u0003\u0002\u0002\u0002\u00d1\u00ef\u00072\u0002",
+    "\u0002\u00d2\u00ef\t\u0006\u0002\u0002\u00d3\u00ef\u00074\u0002\u0002",
+    "\u00d4\u00ef\u0007%\u0002\u0002\u00d5\u00ef\u0007-\u0002\u0002\u00d6",
+    "\u00d8\u0007\n\u0002\u0002\u00d7\u00d9\u0005(\u0015\u0002\u00d8\u00d7",
+    "\u0003\u0002\u0002\u0002\u00d8\u00d9\u0003\u0002\u0002\u0002\u00d9\u00da",
+    "\u0003\u0002\u0002\u0002\u00da\u00ef\u0007\u000b\u0002\u0002\u00db\u00e4",
+    "\u0007\u0003\u0002\u0002\u00dc\u00e1\u0005*\u0016\u0002\u00dd\u00de",
+    "\u0007\u0007\u0002\u0002\u00de\u00e0\u0005*\u0016\u0002\u00df\u00dd",
+    "\u0003\u0002\u0002\u0002\u00e0\u00e3\u0003\u0002\u0002\u0002\u00e1\u00df",
+    "\u0003\u0002\u0002\u0002\u00e1\u00e2\u0003\u0002\u0002\u0002\u00e2\u00e5",
+    "\u0003\u0002\u0002\u0002\u00e3\u00e1\u0003\u0002\u0002\u0002\u00e4\u00dc",
+    "\u0003\u0002\u0002\u0002\u00e4\u00e5\u0003\u0002\u0002\u0002\u00e5\u00e6",
+    "\u0003\u0002\u0002\u0002\u00e6\u00ef\u0007\u0004\u0002\u0002\u00e7\u00e8",
+    "\u0007,\u0002\u0002\u00e8\u00e9\u0005\b\u0005\u0002\u00e9\u00ea\u0007",
+    "\u0003\u0002\u0002\u00ea\u00eb\u0005\f\u0007\u0002\u00eb\u00ec\u0007",
+    "\u0004\u0002\u0002\u00ec\u00ef\u0003\u0002\u0002\u0002\u00ed\u00ef\u0007",
+    "1\u0002\u0002\u00ee\u00cd\u0003\u0002\u0002\u0002\u00ee\u00d1\u0003",
+    "\u0002\u0002\u0002\u00ee\u00d2\u0003\u0002\u0002\u0002\u00ee\u00d3\u0003",
+    "\u0002\u0002\u0002\u00ee\u00d4\u0003\u0002\u0002\u0002\u00ee\u00d5\u0003",
+    "\u0002\u0002\u0002\u00ee\u00d6\u0003\u0002\u0002\u0002\u00ee\u00db\u0003",
+    "\u0002\u0002\u0002\u00ee\u00e7\u0003\u0002\u0002\u0002\u00ee\u00ed\u0003",
+    "\u0002\u0002\u0002\u00ef\'\u0003\u0002\u0002\u0002\u00f0\u00f5\u0005",
+    "\u0012\n\u0002\u00f1\u00f2\u0007\u0007\u0002\u0002\u00f2\u00f4\u0005",
+    "\u0012\n\u0002\u00f3\u00f1\u0003\u0002\u0002\u0002\u00f4\u00f7\u0003",
+    "\u0002\u0002\u0002\u00f5\u00f3\u0003\u0002\u0002\u0002\u00f5\u00f6\u0003",
+    "\u0002\u0002\u0002\u00f6)\u0003\u0002\u0002\u0002\u00f7\u00f5\u0003",
+    "\u0002\u0002\u0002\u00f8\u00f9\u00071\u0002\u0002\u00f9\u00fa\u0007",
+    "\f\u0002\u0002\u00fa\u00fb\u0005\u0012\n\u0002\u00fb+\u0003\u0002\u0002",
+    "\u0002\u00fc\u00fd\u0007\r\u0002\u0002\u00fd\u00ff\u0007\u0005\u0002",
+    "\u0002\u00fe\u0100\u0005\u0012\n\u0002\u00ff\u00fe\u0003\u0002\u0002",
+    "\u0002\u00ff\u0100\u0003\u0002\u0002\u0002\u0100\u0101\u0003\u0002\u0002",
+    "\u0002\u0101\u0134\u0007\u0006\u0002\u0002\u0102\u0103\u0007\u000e\u0002",
+    "\u0002\u0103\u0104\u0007\u0005\u0002\u0002\u0104\u0105\u0005\u0012\n",
+    "\u0002\u0105\u0106\u0007\u0006\u0002\u0002\u0106\u0134\u0003\u0002\u0002",
+    "\u0002\u0107\u0108\u0007\u000f\u0002\u0002\u0108\u0109\u0007\u0005\u0002",
+    "\u0002\u0109\u010a\u0005\u0012\n\u0002\u010a\u010b\u0007\u0006\u0002",
+    "\u0002\u010b\u0134\u0003\u0002\u0002\u0002\u010c\u010d\u0007\u0010\u0002",
+    "\u0002\u010d\u010e\u0007\u0005\u0002\u0002\u010e\u0134\u0007\u0006\u0002",
+    "\u0002\u010f\u0110\u0007\u0011\u0002\u0002\u0110\u0111\u0007\u0005\u0002",
+    "\u0002\u0111\u0134\u0007\u0006\u0002\u0002\u0112\u0113\u0007\u0012\u0002",
+    "\u0002\u0113\u0114\u0007\u0005\u0002\u0002\u0114\u0134\u0007\u0006\u0002",
+    "\u0002\u0115\u0116\u0007\u0013\u0002\u0002\u0116\u0117\u0007\u0005\u0002",
+    "\u0002\u0117\u0118\u0005\u0012\n\u0002\u0118\u0119\u0007\u0006\u0002",
+    "\u0002\u0119\u0134\u0003\u0002\u0002\u0002\u011a\u011b\u0007\u0014\u0002",
+    "\u0002\u011b\u011c\u0007\u0005\u0002\u0002\u011c\u011d\u0005\u0012\n",
+    "\u0002\u011d\u011e\u0007\u0006\u0002\u0002\u011e\u0134\u0003\u0002\u0002",
+    "\u0002\u011f\u0120\u0007\u0015\u0002\u0002\u0120\u0121\u0007\u0005\u0002",
+    "\u0002\u0121\u0134\u0007\u0006\u0002\u0002\u0122\u0123\u0007,\u0002",
+    "\u0002\u0123\u0124\u0005\b\u0005\u0002\u0124\u0125\u0007\u0003\u0002",
+    "\u0002\u0125\u0126\u0005\f\u0007\u0002\u0126\u0127\u0007\u0004\u0002",
+    "\u0002\u0127\u0129\u0007\u0005\u0002\u0002\u0128\u012a\u0005(\u0015",
+    "\u0002\u0129\u0128\u0003\u0002\u0002\u0002\u0129\u012a\u0003\u0002\u0002",
+    "\u0002\u012a\u012b\u0003\u0002\u0002\u0002\u012b\u012c\u0007\u0006\u0002",
+    "\u0002\u012c\u0134\u0003\u0002\u0002\u0002\u012d\u012e\u00071\u0002",
+    "\u0002\u012e\u0130\u0007\u0005\u0002\u0002\u012f\u0131\u0005(\u0015",
+    "\u0002\u0130\u012f\u0003\u0002\u0002\u0002\u0130\u0131\u0003\u0002\u0002",
+    "\u0002\u0131\u0132\u0003\u0002\u0002\u0002\u0132\u0134\u0007\u0006\u0002",
+    "\u0002\u0133\u00fc\u0003\u0002\u0002\u0002\u0133\u0102\u0003\u0002\u0002",
+    "\u0002\u0133\u0107\u0003\u0002\u0002\u0002\u0133\u010c\u0003\u0002\u0002",
+    "\u0002\u0133\u010f\u0003\u0002\u0002\u0002\u0133\u0112\u0003\u0002\u0002",
+    "\u0002\u0133\u0115\u0003\u0002\u0002\u0002\u0133\u011a\u0003\u0002\u0002",
+    "\u0002\u0133\u011f\u0003\u0002\u0002\u0002\u0133\u0122\u0003\u0002\u0002",
+    "\u0002\u0133\u012d\u0003\u0002\u0002\u0002\u0134-\u0003\u0002\u0002",
+    "\u0002\u001d17BKQlp~\u0085\u008e\u0096\u009c\u00a4\u00af\u00b5\u00bd",
+    "\u00c8\u00cb\u00d8\u00e1\u00e4\u00ee\u00f5\u00ff\u0129\u0130\u0133"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -211,21 +221,21 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 var sharedContextCache = new antlr4.PredictionContextCache();
 
 var literalNames = [ null, "'{'", "'}'", "'('", "')'", "','", "';'", "'.'", 
-                     "'['", "']'", "':'", "'write'", "'onDebugOutput'", 
-                     "'onAppOutput'", "'onExecStateChange'", "'debug'", 
-                     "'='", "'=='", "'!='", "'<'", "'<='", "'>'", "'>='", 
-                     "'+'", "'-'", "'*'", "'/'", "'%'", "'not'", "'and'", 
-                     "'or'", "'null'", "'if'", "'elsif'", "'else'", "'while'", 
-                     "'for'", "'in'", "'function'", "'this'", "'return'", 
-                     "'true'", "'false'" ];
+                     "'['", "']'", "':'", "'write'", "'debugOut'", "'debug'", 
+                     "'stop'", "'pause'", "'cont'", "'break'", "'breakDel'", 
+                     "'vars'", "'='", "'=='", "'!='", "'<'", "'<='", "'>'", 
+                     "'>='", "'+'", "'-'", "'*'", "'/'", "'%'", "'not'", 
+                     "'and'", "'or'", "'null'", "'if'", "'elsif'", "'else'", 
+                     "'while'", "'for'", "'in'", "'function'", "'this'", 
+                     "'return'", "'true'", "'false'" ];
 
 var symbolicNames = [ null, null, null, null, null, null, null, null, null, 
-                      null, null, null, null, null, null, null, "ASSIGN", 
-                      "EQUAL", "NOT_EQUAL", "LT", "LE", "GT", "GE", "PLUS", 
-                      "MINUS", "MUL", "DIV", "MOD", "NOT", "AND", "OR", 
-                      "NULL", "IF", "ELSIF", "ELSE", "WHILE", "FOR", "IN", 
-                      "FUNC", "THIS", "RETURN", "TRUE", "FALSE", "ID", "INT", 
-                      "COMMENT", "STRING", "WS" ];
+                      null, null, null, null, null, null, null, null, null, 
+                      null, null, "ASSIGN", "EQUAL", "NOT_EQUAL", "LT", 
+                      "LE", "GT", "GE", "PLUS", "MINUS", "MUL", "DIV", "MOD", 
+                      "NOT", "AND", "OR", "NULL", "IF", "ELSIF", "ELSE", 
+                      "WHILE", "FOR", "IN", "FUNC", "THIS", "RETURN", "TRUE", 
+                      "FALSE", "ID", "INT", "COMMENT", "STRING", "WS" ];
 
 var ruleNames =  [ "prog", "progChunk", "func", "params", "paramList", "blockInstructions", 
                    "instruction", "ifElse", "expr", "andExpr", "cmpExpr", 
@@ -266,38 +276,42 @@ gdbParser.T__11 = 12;
 gdbParser.T__12 = 13;
 gdbParser.T__13 = 14;
 gdbParser.T__14 = 15;
-gdbParser.ASSIGN = 16;
-gdbParser.EQUAL = 17;
-gdbParser.NOT_EQUAL = 18;
-gdbParser.LT = 19;
-gdbParser.LE = 20;
-gdbParser.GT = 21;
-gdbParser.GE = 22;
-gdbParser.PLUS = 23;
-gdbParser.MINUS = 24;
-gdbParser.MUL = 25;
-gdbParser.DIV = 26;
-gdbParser.MOD = 27;
-gdbParser.NOT = 28;
-gdbParser.AND = 29;
-gdbParser.OR = 30;
-gdbParser.NULL = 31;
-gdbParser.IF = 32;
-gdbParser.ELSIF = 33;
-gdbParser.ELSE = 34;
-gdbParser.WHILE = 35;
-gdbParser.FOR = 36;
-gdbParser.IN = 37;
-gdbParser.FUNC = 38;
-gdbParser.THIS = 39;
-gdbParser.RETURN = 40;
-gdbParser.TRUE = 41;
-gdbParser.FALSE = 42;
-gdbParser.ID = 43;
-gdbParser.INT = 44;
-gdbParser.COMMENT = 45;
-gdbParser.STRING = 46;
-gdbParser.WS = 47;
+gdbParser.T__15 = 16;
+gdbParser.T__16 = 17;
+gdbParser.T__17 = 18;
+gdbParser.T__18 = 19;
+gdbParser.ASSIGN = 20;
+gdbParser.EQUAL = 21;
+gdbParser.NOT_EQUAL = 22;
+gdbParser.LT = 23;
+gdbParser.LE = 24;
+gdbParser.GT = 25;
+gdbParser.GE = 26;
+gdbParser.PLUS = 27;
+gdbParser.MINUS = 28;
+gdbParser.MUL = 29;
+gdbParser.DIV = 30;
+gdbParser.MOD = 31;
+gdbParser.NOT = 32;
+gdbParser.AND = 33;
+gdbParser.OR = 34;
+gdbParser.NULL = 35;
+gdbParser.IF = 36;
+gdbParser.ELSIF = 37;
+gdbParser.ELSE = 38;
+gdbParser.WHILE = 39;
+gdbParser.FOR = 40;
+gdbParser.IN = 41;
+gdbParser.FUNC = 42;
+gdbParser.THIS = 43;
+gdbParser.RETURN = 44;
+gdbParser.TRUE = 45;
+gdbParser.FALSE = 46;
+gdbParser.ID = 47;
+gdbParser.INT = 48;
+gdbParser.COMMENT = 49;
+gdbParser.STRING = 50;
+gdbParser.WS = 51;
 
 gdbParser.RULE_prog = 0;
 gdbParser.RULE_progChunk = 1;
@@ -394,7 +408,7 @@ gdbParser.prototype.prog = function() {
             this.state = 47; 
             this._errHandler.sync(this);
             _la = this._input.LA(1);
-        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__5) | (1 << gdbParser.T__10) | (1 << gdbParser.T__11) | (1 << gdbParser.T__12) | (1 << gdbParser.T__13) | (1 << gdbParser.T__14))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.IF - 32)) | (1 << (gdbParser.WHILE - 32)) | (1 << (gdbParser.FOR - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.RETURN - 32)) | (1 << (gdbParser.ID - 32)))) !== 0));
+        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__5) | (1 << gdbParser.T__10) | (1 << gdbParser.T__11) | (1 << gdbParser.T__12) | (1 << gdbParser.T__13) | (1 << gdbParser.T__14) | (1 << gdbParser.T__15) | (1 << gdbParser.T__16) | (1 << gdbParser.T__17) | (1 << gdbParser.T__18))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (gdbParser.IF - 36)) | (1 << (gdbParser.WHILE - 36)) | (1 << (gdbParser.FOR - 36)) | (1 << (gdbParser.FUNC - 36)) | (1 << (gdbParser.RETURN - 36)) | (1 << (gdbParser.ID - 36)))) !== 0));
         this.state = 49;
         this.match(gdbParser.EOF);
     } catch (re) {
@@ -1271,7 +1285,7 @@ gdbParser.prototype.instruction = function() {
             this.match(gdbParser.RETURN);
             this.state = 106;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
                 this.state = 105;
                 this.expr();
             }
@@ -2187,11 +2201,11 @@ gdbParser.prototype.unit = function() {
         this.enterOuterAlt(localctx, 1);
         this.state = 179;
         _la = this._input.LA(1);
-        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT))) !== 0)) {
+        if(((((_la - 27)) & ~0x1f) == 0 && ((1 << (_la - 27)) & ((1 << (gdbParser.PLUS - 27)) | (1 << (gdbParser.MINUS - 27)) | (1 << (gdbParser.NOT - 27)))) !== 0)) {
             this.state = 178;
             localctx.op = this._input.LT(1);
             _la = this._input.LA(1);
-            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT))) !== 0))) {
+            if(!(((((_la - 27)) & ~0x1f) == 0 && ((1 << (_la - 27)) & ((1 << (gdbParser.PLUS - 27)) | (1 << (gdbParser.MINUS - 27)) | (1 << (gdbParser.NOT - 27)))) !== 0))) {
                 localctx.op = this._errHandler.recoverInline(this);
             }
             else {
@@ -2468,7 +2482,7 @@ gdbParser.prototype.subAccess = function() {
             this.match(gdbParser.T__2);
             this.state = 198;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
                 this.state = 197;
                 this.exprList();
             }
@@ -2950,7 +2964,7 @@ gdbParser.prototype.atom = function() {
             this.match(gdbParser.T__7);
             this.state = 214;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
                 this.state = 213;
                 this.exprList();
             }
@@ -3207,6 +3221,172 @@ FunCallContext.prototype.copyFrom = function(ctx) {
 };
 
 
+function DbgVarsCallContext(parser, ctx) {
+	FunCallContext.call(this, parser);
+    FunCallContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DbgVarsCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgVarsCallContext.prototype.constructor = DbgVarsCallContext;
+
+gdbParser.DbgVarsCallContext = DbgVarsCallContext;
+
+DbgVarsCallContext.prototype.enterRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.enterDbgVarsCall(this);
+	}
+};
+
+DbgVarsCallContext.prototype.exitRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.exitDbgVarsCall(this);
+	}
+};
+
+DbgVarsCallContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof gdbVisitor ) {
+        return visitor.visitDbgVarsCall(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function DbgRunCallContext(parser, ctx) {
+	FunCallContext.call(this, parser);
+    FunCallContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DbgRunCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgRunCallContext.prototype.constructor = DbgRunCallContext;
+
+gdbParser.DbgRunCallContext = DbgRunCallContext;
+
+DbgRunCallContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+DbgRunCallContext.prototype.enterRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.enterDbgRunCall(this);
+	}
+};
+
+DbgRunCallContext.prototype.exitRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.exitDbgRunCall(this);
+	}
+};
+
+DbgRunCallContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof gdbVisitor ) {
+        return visitor.visitDbgRunCall(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function DbgStopCallContext(parser, ctx) {
+	FunCallContext.call(this, parser);
+    FunCallContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DbgStopCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgStopCallContext.prototype.constructor = DbgStopCallContext;
+
+gdbParser.DbgStopCallContext = DbgStopCallContext;
+
+DbgStopCallContext.prototype.enterRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.enterDbgStopCall(this);
+	}
+};
+
+DbgStopCallContext.prototype.exitRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.exitDbgStopCall(this);
+	}
+};
+
+DbgStopCallContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof gdbVisitor ) {
+        return visitor.visitDbgStopCall(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function DbgContCallContext(parser, ctx) {
+	FunCallContext.call(this, parser);
+    FunCallContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DbgContCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgContCallContext.prototype.constructor = DbgContCallContext;
+
+gdbParser.DbgContCallContext = DbgContCallContext;
+
+DbgContCallContext.prototype.enterRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.enterDbgContCall(this);
+	}
+};
+
+DbgContCallContext.prototype.exitRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.exitDbgContCall(this);
+	}
+};
+
+DbgContCallContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof gdbVisitor ) {
+        return visitor.visitDbgContCall(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function DbgBreakInsCallContext(parser, ctx) {
+	FunCallContext.call(this, parser);
+    FunCallContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DbgBreakInsCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgBreakInsCallContext.prototype.constructor = DbgBreakInsCallContext;
+
+gdbParser.DbgBreakInsCallContext = DbgBreakInsCallContext;
+
+DbgBreakInsCallContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+DbgBreakInsCallContext.prototype.enterRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.enterDbgBreakInsCall(this);
+	}
+};
+
+DbgBreakInsCallContext.prototype.exitRule = function(listener) {
+    if(listener instanceof gdbListener ) {
+        listener.exitDbgBreakInsCall(this);
+	}
+};
+
+DbgBreakInsCallContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof gdbVisitor ) {
+        return visitor.visitDbgBreakInsCall(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
 function OnDebugOutputCallContext(parser, ctx) {
 	FunCallContext.call(this, parser);
     FunCallContext.prototype.copyFrom.call(this, ctx);
@@ -3242,35 +3422,32 @@ OnDebugOutputCallContext.prototype.accept = function(visitor) {
 };
 
 
-function DebugCallContext(parser, ctx) {
+function DbgPauseCallContext(parser, ctx) {
 	FunCallContext.call(this, parser);
     FunCallContext.prototype.copyFrom.call(this, ctx);
     return this;
 }
 
-DebugCallContext.prototype = Object.create(FunCallContext.prototype);
-DebugCallContext.prototype.constructor = DebugCallContext;
+DbgPauseCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgPauseCallContext.prototype.constructor = DbgPauseCallContext;
 
-gdbParser.DebugCallContext = DebugCallContext;
+gdbParser.DbgPauseCallContext = DbgPauseCallContext;
 
-DebugCallContext.prototype.expr = function() {
-    return this.getTypedRuleContext(ExprContext,0);
-};
-DebugCallContext.prototype.enterRule = function(listener) {
+DbgPauseCallContext.prototype.enterRule = function(listener) {
     if(listener instanceof gdbListener ) {
-        listener.enterDebugCall(this);
+        listener.enterDbgPauseCall(this);
 	}
 };
 
-DebugCallContext.prototype.exitRule = function(listener) {
+DbgPauseCallContext.prototype.exitRule = function(listener) {
     if(listener instanceof gdbListener ) {
-        listener.exitDebugCall(this);
+        listener.exitDbgPauseCall(this);
 	}
 };
 
-DebugCallContext.prototype.accept = function(visitor) {
+DbgPauseCallContext.prototype.accept = function(visitor) {
     if ( visitor instanceof gdbVisitor ) {
-        return visitor.visitDebugCall(this);
+        return visitor.visitDbgPauseCall(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -3312,35 +3489,35 @@ WriteCallContext.prototype.accept = function(visitor) {
 };
 
 
-function OnAppOutputCallContext(parser, ctx) {
+function DbgBreakRemCallContext(parser, ctx) {
 	FunCallContext.call(this, parser);
     FunCallContext.prototype.copyFrom.call(this, ctx);
     return this;
 }
 
-OnAppOutputCallContext.prototype = Object.create(FunCallContext.prototype);
-OnAppOutputCallContext.prototype.constructor = OnAppOutputCallContext;
+DbgBreakRemCallContext.prototype = Object.create(FunCallContext.prototype);
+DbgBreakRemCallContext.prototype.constructor = DbgBreakRemCallContext;
 
-gdbParser.OnAppOutputCallContext = OnAppOutputCallContext;
+gdbParser.DbgBreakRemCallContext = DbgBreakRemCallContext;
 
-OnAppOutputCallContext.prototype.expr = function() {
+DbgBreakRemCallContext.prototype.expr = function() {
     return this.getTypedRuleContext(ExprContext,0);
 };
-OnAppOutputCallContext.prototype.enterRule = function(listener) {
+DbgBreakRemCallContext.prototype.enterRule = function(listener) {
     if(listener instanceof gdbListener ) {
-        listener.enterOnAppOutputCall(this);
+        listener.enterDbgBreakRemCall(this);
 	}
 };
 
-OnAppOutputCallContext.prototype.exitRule = function(listener) {
+DbgBreakRemCallContext.prototype.exitRule = function(listener) {
     if(listener instanceof gdbListener ) {
-        listener.exitOnAppOutputCall(this);
+        listener.exitDbgBreakRemCall(this);
 	}
 };
 
-OnAppOutputCallContext.prototype.accept = function(visitor) {
+DbgBreakRemCallContext.prototype.accept = function(visitor) {
     if ( visitor instanceof gdbVisitor ) {
-        return visitor.visitOnAppOutputCall(this);
+        return visitor.visitDbgBreakRemCall(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -3433,41 +3610,6 @@ AnonFuncCallContext.prototype.accept = function(visitor) {
 };
 
 
-function OnExecStateChangeCallContext(parser, ctx) {
-	FunCallContext.call(this, parser);
-    FunCallContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-OnExecStateChangeCallContext.prototype = Object.create(FunCallContext.prototype);
-OnExecStateChangeCallContext.prototype.constructor = OnExecStateChangeCallContext;
-
-gdbParser.OnExecStateChangeCallContext = OnExecStateChangeCallContext;
-
-OnExecStateChangeCallContext.prototype.expr = function() {
-    return this.getTypedRuleContext(ExprContext,0);
-};
-OnExecStateChangeCallContext.prototype.enterRule = function(listener) {
-    if(listener instanceof gdbListener ) {
-        listener.enterOnExecStateChangeCall(this);
-	}
-};
-
-OnExecStateChangeCallContext.prototype.exitRule = function(listener) {
-    if(listener instanceof gdbListener ) {
-        listener.exitOnExecStateChangeCall(this);
-	}
-};
-
-OnExecStateChangeCallContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof gdbVisitor ) {
-        return visitor.visitOnExecStateChangeCall(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
 
 gdbParser.FunCallContext = FunCallContext;
 
@@ -3477,7 +3619,7 @@ gdbParser.prototype.funCall = function() {
     this.enterRule(localctx, 42, gdbParser.RULE_funCall);
     var _la = 0; // Token type
     try {
-        this.state = 293;
+        this.state = 305;
         switch(this._input.LA(1)) {
         case gdbParser.T__10:
             localctx = new WriteCallContext(this, localctx);
@@ -3488,7 +3630,7 @@ gdbParser.prototype.funCall = function() {
             this.match(gdbParser.T__2);
             this.state = 253;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
                 this.state = 252;
                 this.expr();
             }
@@ -3509,7 +3651,7 @@ gdbParser.prototype.funCall = function() {
             this.match(gdbParser.T__3);
             break;
         case gdbParser.T__12:
-            localctx = new OnAppOutputCallContext(this, localctx);
+            localctx = new DbgRunCallContext(this, localctx);
             this.enterOuterAlt(localctx, 3);
             this.state = 261;
             this.match(gdbParser.T__12);
@@ -3521,69 +3663,109 @@ gdbParser.prototype.funCall = function() {
             this.match(gdbParser.T__3);
             break;
         case gdbParser.T__13:
-            localctx = new OnExecStateChangeCallContext(this, localctx);
+            localctx = new DbgStopCallContext(this, localctx);
             this.enterOuterAlt(localctx, 4);
             this.state = 266;
             this.match(gdbParser.T__13);
             this.state = 267;
             this.match(gdbParser.T__2);
             this.state = 268;
-            this.expr();
-            this.state = 269;
             this.match(gdbParser.T__3);
             break;
         case gdbParser.T__14:
-            localctx = new DebugCallContext(this, localctx);
+            localctx = new DbgPauseCallContext(this, localctx);
             this.enterOuterAlt(localctx, 5);
-            this.state = 271;
+            this.state = 269;
             this.match(gdbParser.T__14);
-            this.state = 272;
+            this.state = 270;
             this.match(gdbParser.T__2);
+            this.state = 271;
+            this.match(gdbParser.T__3);
+            break;
+        case gdbParser.T__15:
+            localctx = new DbgContCallContext(this, localctx);
+            this.enterOuterAlt(localctx, 6);
+            this.state = 272;
+            this.match(gdbParser.T__15);
             this.state = 273;
-            this.expr();
+            this.match(gdbParser.T__2);
             this.state = 274;
+            this.match(gdbParser.T__3);
+            break;
+        case gdbParser.T__16:
+            localctx = new DbgBreakInsCallContext(this, localctx);
+            this.enterOuterAlt(localctx, 7);
+            this.state = 275;
+            this.match(gdbParser.T__16);
+            this.state = 276;
+            this.match(gdbParser.T__2);
+            this.state = 277;
+            this.expr();
+            this.state = 278;
+            this.match(gdbParser.T__3);
+            break;
+        case gdbParser.T__17:
+            localctx = new DbgBreakRemCallContext(this, localctx);
+            this.enterOuterAlt(localctx, 8);
+            this.state = 280;
+            this.match(gdbParser.T__17);
+            this.state = 281;
+            this.match(gdbParser.T__2);
+            this.state = 282;
+            this.expr();
+            this.state = 283;
+            this.match(gdbParser.T__3);
+            break;
+        case gdbParser.T__18:
+            localctx = new DbgVarsCallContext(this, localctx);
+            this.enterOuterAlt(localctx, 9);
+            this.state = 285;
+            this.match(gdbParser.T__18);
+            this.state = 286;
+            this.match(gdbParser.T__2);
+            this.state = 287;
             this.match(gdbParser.T__3);
             break;
         case gdbParser.FUNC:
             localctx = new AnonFuncCallContext(this, localctx);
-            this.enterOuterAlt(localctx, 6);
-            this.state = 276;
+            this.enterOuterAlt(localctx, 10);
+            this.state = 288;
             this.match(gdbParser.FUNC);
-            this.state = 277;
+            this.state = 289;
             this.params();
-            this.state = 278;
+            this.state = 290;
             this.match(gdbParser.T__0);
-            this.state = 279;
+            this.state = 291;
             this.blockInstructions();
-            this.state = 280;
+            this.state = 292;
             this.match(gdbParser.T__1);
-            this.state = 281;
+            this.state = 293;
             this.match(gdbParser.T__2);
-            this.state = 283;
+            this.state = 295;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
-                this.state = 282;
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
+                this.state = 294;
                 this.exprList();
             }
 
-            this.state = 285;
+            this.state = 297;
             this.match(gdbParser.T__3);
             break;
         case gdbParser.ID:
             localctx = new UserDefinedFuncCallContext(this, localctx);
-            this.enterOuterAlt(localctx, 7);
-            this.state = 287;
+            this.enterOuterAlt(localctx, 11);
+            this.state = 299;
             this.match(gdbParser.ID);
-            this.state = 288;
+            this.state = 300;
             this.match(gdbParser.T__2);
-            this.state = 290;
+            this.state = 302;
             _la = this._input.LA(1);
-            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS) | (1 << gdbParser.NOT) | (1 << gdbParser.NULL))) !== 0) || ((((_la - 38)) & ~0x1f) == 0 && ((1 << (_la - 38)) & ((1 << (gdbParser.FUNC - 38)) | (1 << (gdbParser.THIS - 38)) | (1 << (gdbParser.TRUE - 38)) | (1 << (gdbParser.FALSE - 38)) | (1 << (gdbParser.ID - 38)) | (1 << (gdbParser.INT - 38)) | (1 << (gdbParser.STRING - 38)))) !== 0)) {
-                this.state = 289;
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << gdbParser.T__0) | (1 << gdbParser.T__2) | (1 << gdbParser.T__7) | (1 << gdbParser.PLUS) | (1 << gdbParser.MINUS))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (gdbParser.NOT - 32)) | (1 << (gdbParser.NULL - 32)) | (1 << (gdbParser.FUNC - 32)) | (1 << (gdbParser.THIS - 32)) | (1 << (gdbParser.TRUE - 32)) | (1 << (gdbParser.FALSE - 32)) | (1 << (gdbParser.ID - 32)) | (1 << (gdbParser.INT - 32)) | (1 << (gdbParser.STRING - 32)))) !== 0)) {
+                this.state = 301;
                 this.exprList();
             }
 
-            this.state = 292;
+            this.state = 304;
             this.match(gdbParser.T__3);
             break;
         default:

@@ -263,5 +263,5 @@ function parseGdbMiOut(data) {
   };
 }
 
-module.exports = parseGdbMiOut;
+exports.gdbParser = parseGdbMiOut;
 

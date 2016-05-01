@@ -2,9 +2,12 @@ var gdbVisitor = require('./gdbVisitor').gdbVisitor;
 var gdbParser = require('./gdbParser').gdbParser;
 var antlr4 = require('antlr4/index');
 
+var debugController = require('./cpp/debugController').debugController;
+
 
 var gdbVisitorImpl = function() {
   gdbVisitor.call(this); // inherit default Visitor
+  this.gdbController = new debugController(this);
   return this;
 };
 
@@ -152,7 +155,7 @@ var Return = function(value) {
 // output + prettyPrint
 //---------------------------------------------------------------------------------
 gdbVisitorImpl.prototype.write = function(obj) {
-  process.stdout.write('>> '+obj+'\n');
+  process.stdout.write('>> '+this.prettyPrint(obj)+'\n');
 };
 
 gdbVisitorImpl.prototype.prettyPrint = function(obj) {
@@ -563,8 +566,9 @@ gdbVisitorImpl.prototype.visitAccess = function(ctx) {
 
         // the object better have the property!
         var property = subAccess[i].accept(this);
-        checkHasProperty(value, property, subAccess[i]);
-        value = value[property];
+        //checkHasProperty(value, property, subAccess[i]);
+        if (!(property in value)) value = null;
+        else value = value[property];
 
       } else if (subAccess[i] instanceof gdbParser.FuncAccessContext) {
 
@@ -732,6 +736,69 @@ gdbVisitorImpl.prototype.visitUserDefinedFuncCall = function(ctx) {
 };
 
 
+// Visit a parse tree produced by gdbParser#DbgRunCall.
+gdbVisitorImpl.prototype.visitDbgRunCall = function(ctx) {
+  var expr = ctx.expr();
+  var value = expr.accept(this);
+  checkString(value, expr);
+
+  this.gdbController.gdbRun({
+    sourceFile: value,
+    programArgs: []
+  });  
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgStopCall.
+gdbVisitorImpl.prototype.visitDbgStopCall = function(ctx) {
+  this.gdbController.gdbStop();  
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgPauseCall.
+gdbVisitorImpl.prototype.visitDbgPauseCall = function(ctx) {
+  this.gdbController.gdbPause(); 
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgContCall.
+gdbVisitorImpl.prototype.visitDbgContCall = function(ctx) {
+  this.gdbController.gdbContinue(); 
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgBreakInsCall.
+gdbVisitorImpl.prototype.visitDbgBreakInsCall = function(ctx) {
+  var expr = ctx.expr();
+  var value = expr.accept(this);
+  checkNumber(value, expr);
+
+  this.gdbController.gdbInsertBreak(value);
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgBreakRemCall.
+gdbVisitorImpl.prototype.visitDbgBreakRemCall = function(ctx) {
+  var expr = ctx.expr();
+  var value = expr.accept(this);
+  checkNumber(value, expr);
+
+  this.gdbController.gdbDeleteBreak(value);
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgVarsCall.
+gdbVisitorImpl.prototype.visitDbgVarsCall = function(ctx) {
+  this.gdbController.gdbListVariables();
+};
+
+
+//-------------------------------------------------------------------------------------
+// output callback
+//-------------------------------------------------------------------------------------
+
+var debugOutputFunc = undefined;
+
 // Visit a parse tree produced by gdbParser#OnDebugOutputCall.
 gdbVisitorImpl.prototype.visitOnDebugOutputCall = function(ctx) {
   var expr = ctx.expr();
@@ -742,27 +809,51 @@ gdbVisitorImpl.prototype.visitOnDebugOutputCall = function(ctx) {
   checkArgsNumber(params, 1, func);
 
   // tell the user it was ok
-  this.write("onDebugOutput function set");
+  debugOutputFunc = func;
+  this.gdbLog("debugOut function set");
 };
 
 
-// Visit a parse tree produced by gdbParser#OnAppOutputCall.
-gdbVisitorImpl.prototype.visitOnAppOutputCall = function(ctx) {
+//-------------------------------------------------------------------------------------
+// output handler hooks
+//-------------------------------------------------------------------------------------
+gdbVisitorImpl.prototype.gdbOutput = function(data) {
+  try {
 
-  this.write("onAppOutputCall function set");
+    // invoke callback!
+    if (debugOutputFunc) 
+      this.execFunc(debugOutputFunc, [ data ], debugOutputFunc);
+
+  } catch (ex) {
+    if ('type' in ex) {
+      // can only be an exe error at this point
+      if (ex.type==="executionError") {
+        var line = ex.ctx.start.line;
+        var col = ex.ctx.start.column+1;
+        var exception = "execution error at line "+line+", column "+col+": "+ex.msg+"\n"+ex.stackTrace;
+          console.log(exception);
+        //throw exception;
+      }
+    } else {
+      console.log("unexpected error: "+JSON.stringify(ex));
+      throw ex;
+    }
+  }
 };
-
-
-// Visit a parse tree produced by gdbParser#OnExecStateChangeCall.
-gdbVisitorImpl.prototype.visitOnExecStateChangeCall = function(ctx) {
-
-  this.write("onExecStateChangeCall function set");
+gdbVisitorImpl.prototype.appOutput = function(data) {
+  var lines = data.split("\n");
+  for (var i=0; i<lines.length; ++i)
+    this.write("~ "+lines[i]);
 };
-
-
-// Visit a parse tree produced by gdbParser#DebugCall.
-gdbVisitorImpl.prototype.visitDebugCall = function(ctx) {
-  this.write("starting debug session");
+gdbVisitorImpl.prototype.gdbErr = function(data) {
+  var lines = data.split("\n");
+  for (var i=0; i<lines.length; ++i)
+    this.write("* "+data);
+};
+gdbVisitorImpl.prototype.gdbLog = function(data) {
+  var lines = data.split("\n");
+  for (var i=0; i<lines.length; ++i)
+    this.write("+ "+data);
 };
 
 

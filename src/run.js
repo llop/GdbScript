@@ -44,6 +44,7 @@ process.stdin.on('data', function(data) {
   dataBuffer += data.toString();
 
   try {
+    // parse
     var chars = new antlr4.InputStream(dataBuffer);
     var lexer = new gdbLexer(chars);
     var tokens = new antlr4.CommonTokenStream(lexer);
@@ -52,26 +53,41 @@ process.stdin.on('data', function(data) {
     parser.removeErrorListeners();
     parser.addErrorListener(new gdbErrorListener());
     var tree = parser.prog();
-    gdbVisitor.visitProg(tree);
+
+    // interpret
     dataBuffer = "";
+    gdbVisitor.visitProg(tree);
   } catch (ex) {
-    if (ex.type==="syntaxError") {
-      if (ex.offendingSymbol.type!==Token.EOF) {
-        var line = ex.line;
-        var col = ex.column+1;   // column indices are 0-based (not so in most text editors)
-        var exception = "syntax error at line "+line+", column "+col+": "+ex.msg;
-        throw exception;
+    if ('type' in ex) {
+      if (ex.type==="syntaxError") {
+        if (ex.offendingSymbol.type!==Token.EOF) {
+          var line = ex.line;
+          var col = ex.column+1;   // column indices are 0-based (not so in most text editors)
+          var exception = "syntax error at line "+line+", column "+col+": "+ex.msg;
+
+          dataBuffer = "";
+          console.log(exception);
+          //throw exception;
+        }
+      } else if (ex.type==="executionError") {
+        var line = ex.ctx.start.line;
+        var col = ex.ctx.start.column+1;
+        var exception = "execution error at line "+line+", column "+col+": "+ex.msg+"\n"+ex.stackTrace;
+          console.log(exception);
+        //throw exception;
+      } else {
+        // discard other parse errors
+        if (ex.type==="ambiguity") {
+
+        } else if (ex.type==="attemptingFullContext") {
+
+        } else if (ex.type!=="contextSensitivity") {
+          
+        }
       }
-    } else if (ex.type==="executionError") {
-      var line = ex.ctx.start.line;
-      var col = ex.ctx.start.column+1;
-      var exception = "execution error at line "+line+", column "+col+": "+ex.msg+"\n"+ex.stackTrace;
-      throw exception;
     } else {
-      // discard other parse errors
-      if (!'type' in ex || 
-        (ex.type!=="ambiguity" && ex.type!=="attemptingFullContext" && ex.type!=="contextSensitivity")) 
-          throw ex;
+      console.log("unexpected error: "+JSON.stringify(ex));
+      throw ex;
     }
   }
 });

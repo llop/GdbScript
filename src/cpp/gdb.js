@@ -2,8 +2,8 @@
 
 
 var events = require('events');
-var gdbParser = require('./gdb-mi-parser');
-var gdbExec = require('./gdb-exec');
+var gdbParser = require('./gdb-mi-parser').gdbParser;
+var gdbExec = require('./gdb-exec').gdbExec;
 
 //------------------------------------------------------------------------------
 // 
@@ -43,7 +43,7 @@ var outputTypeToGdbEvent = {
 //   and allows '-exec-interrupt' to actually work!
 //   
 //------------------------------------------------------------------------------
-function gdb(lxcOptions) {
+function gdb() {
   var me = this;  // alias for this
   
   
@@ -93,7 +93,6 @@ function gdb(lxcOptions) {
       _commandCallbacks[_token] = callback;
       var cmd = _token.toString()+name+' '+args.join(' ')+'\n';
       ++_token;
-      //console.log("CMD: "+cmd);
       me.gdb.write(cmd);
     }
   };
@@ -123,9 +122,6 @@ function gdb(lxcOptions) {
   
   function _processGdbMiResult(result) {
     if (!result) return;
-    
-    console.log("processed result "+JSON.stringify(result));
-    
     // record type can be 'result', 'stream', or 'async'
     if (result.recordType=='result')      _processResultRecord(result);
     else if (result.recordType=='stream') _processStreamRecord(result);
@@ -133,6 +129,7 @@ function gdb(lxcOptions) {
     // fire gdb event
     var event = outputTypeToGdbEvent[result.outputType];
     me.emit(event, result);
+    me.emit('gdb-event', { event: event, result: result });
   };
   
   function _processGdbMiOutput(data) {
@@ -149,6 +146,9 @@ function gdb(lxcOptions) {
     
     me.debuggerState = 'idle';
     me.executionState = 'stopped';
+
+    _token = 0;
+    _commandCallbacks = {};
   };
   
   
@@ -179,7 +179,7 @@ function gdb(lxcOptions) {
   // 
   //----------------------------------------------------------------------------
   var host = 'localhost';
-  var port = 4321;
+  var port = 1234;
   var comm = host+':'+port;
   
   gdb.prototype.load = function(programName, programArgs, callback) {
@@ -195,7 +195,7 @@ function gdb(lxcOptions) {
       programArgs: programArgs,
       comm: comm
     };
-    me.gdb = new gdbExec(lxcOptions, gdbExecOptions);
+    me.gdb = new gdbExec(gdbExecOptions);
     me.gdb.ready(function() {
       
       // hook up events
@@ -226,12 +226,12 @@ function gdb(lxcOptions) {
       // If breakpoints are set when using this command with no arguments, gdb will produce error messages. 
       // Otherwise, no output is produced, except a completion notification.
       _command('-file-exec-and-symbols', [programName], function(data) {
-        console.log("-file-exec-and-symbols "+data.class);
+        //console.log("-file-exec-and-symbols "+data.class);
       });
 
       // -exec-arguments -> Set the inferior program arguments, to be used in the next ‘-exec-run’.
       _command('-exec-arguments', programArgs, function(data) {
-        console.log("-exec-arguments "+data.class);
+        //console.log("-exec-arguments "+data.class);
       });
 
       // -target-select -> Connect gdb to the remote target. This command takes two args:
@@ -243,7 +243,6 @@ function gdb(lxcOptions) {
       // at which the target program is, in the following form:
       //   ^connected,addr="address",func="function name",args=[arg list]
       _command('-target-select', ['remote', comm], callback);
-        
     });
   };
   
@@ -518,10 +517,5 @@ function gdb(lxcOptions) {
 }
 
 
-
-/**
- * Module exports.
- * @type {Debugger}
- */
-module.exports = gdb;
+exports.gdb = gdb;
 

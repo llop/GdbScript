@@ -1,10 +1,11 @@
 'use strict';
 
 
+var spawn = require('child_process').spawn;
 var events = require('events');
 
 
-function gdbExec(lxcOptions, gdbOptions) {
+function gdbExec(gdbOptions) {
   var me = this;  // alias
     
   //----------------------------------------------------------------------------
@@ -22,10 +23,6 @@ function gdbExec(lxcOptions, gdbOptions) {
   // 
   //----------------------------------------------------------------------------
   
-  // lxc stuff
-  var boxName = lxcOptions.boxName;
-  var lxcService = lxcOptions.lxcService;
-  
   // program name and gdb-gdbserver connection params
   gdbOptions = gdbOptions || {};
   var programName = gdbOptions.programName;
@@ -38,11 +35,8 @@ function gdbExec(lxcOptions, gdbOptions) {
   // gdbserver and gdb variables
   // 
   //----------------------------------------------------------------------------  
-  var gdb = undefined;              // io streams
+  var gdb = undefined;              // child processes
   var gdbserver = undefined;
-  
-  var gdbserverClient = undefined;  // ssh clients
-  var gdbClient = undefined;
   
   
   //----------------------------------------------------------------------------
@@ -51,10 +45,12 @@ function gdbExec(lxcOptions, gdbOptions) {
   // 
   //----------------------------------------------------------------------------
   gdbExec.prototype.appStdinWrite = function(data) {
-    if (gdbserver) gdbserver.write(data);
+    if (gdbserver) gdbserver.stdin.write(data);
   };
   gdbExec.prototype.write = function(data) {
-    if (gdb) gdb.write(data);
+    if (gdb) {
+      gdb.stdin.write(data);
+    }
   };
   
   
@@ -90,17 +86,13 @@ function gdbExec(lxcOptions, gdbOptions) {
     if (!killed) {
       killed = true;
       // kill server and debugger
-      if (gdbserver) gdbserver.end();
-      if (gdb) gdb.end();
-      if (gdbserverClient) gdbserverClient.end();
-      if (gdbClient) gdbClient.end();
+      if (gdbserver) gdbserver.kill();
+      if (gdb) gdb.kill();
       // unreference 
       gdbserver = undefined;
       gdb = undefined;
-      gdbserverClient = undefined;
-      gdbClient = undefined;
       // broadcast death!
-      console.log("GDB KILLED!");
+      //console.log("GDB KILLED!");
       me.emit('gdb-killed');
     }
   };
@@ -111,64 +103,40 @@ function gdbExec(lxcOptions, gdbOptions) {
   // start gdbserver, then gdb
   // 
   //----------------------------------------------------------------------------
-  var pty = { pty: {term:'xterm'} };
-  lxcService.connect(function(client) {
-    gdbserverClient = client;
-    var suCmd = "'cd ~; "+['gdbserver', comm, programName].concat(programArgs).join(' ')+"'";
-    var cmd = ['lxc-attach', '-n', boxName, '--', 'su', '-c', suCmd, lxcService.user].join(' ');
-    console.log("GDBSERVER COMMAND "+cmd);
-    client.exec(cmd, pty, function(error, stream) {
-      if (error) throw error;
-      
-      gdbserver = stream;
-      stream.on('close', function(code, signal) {
-        console.log('gdbserver exited with code '+code+' signal '+signal);
-        me.kill();
-      });
-      
-      // hook into events
-      stream.on("data", function(data) {
-        console.log("app-out "+data);
-        me.emit("app-out", data);
-      });
-      stream.stderr.on("data", function(data) {
-        console.log("app-err "+data);
-        me.emit("app-err", data);
-      });
-      
-      // and start gdb
-      lxcService.connect(function(client) {
-        gdbClient = client;
-        var suCmd = "'cd ~; "+['gdb', '-i', 'mi'].join(' ')+"'";
-        var cmd = ['lxc-attach', '-n', boxName, '--', 'su', '-c', suCmd, lxcService.user].join(' ');
-        console.log("GDB COMMAND "+cmd);
-        client.exec(cmd, false, function(error, stream) {
-          if (error) throw error;
-          
-          gdb = stream;
-          stream.on('close', function(code, signal) {
-            console.log('gdb exited with code '+code+' signal '+signal);
-            me.kill();
-          });
-          
-          stream.on("data", function(data) {
-            console.log("gdb-out "+data);
-            me.emit("gdb-out", data);
-          });
-          stream.stderr.on("data", function(data) {
-            console.log("gdb-err "+data);
-            me.emit("gdb-err", data);
-          });
-          
-          // we can call this now
-          _readyHandler();
-        });
-      });
-      
-    });
+
+  var gdbServerArgs = [comm, programName].concat(programArgs);
+  gdbserver = spawn('gdbserver', gdbServerArgs);
+  gdbserver.on('close', function(code) {
+    //console.log('gdbserver exited with code '+code);
+    me.kill();
   });
+  gdbserver.stdout.on("data", function(data) {
+    //console.log("app-out "+data);
+    me.emit("app-out", data);
+  });
+  gdbserver.stderr.on("data", function(data) {
+    //console.log("app-err "+data);
+    me.emit("app-err", data);
+  });
+
+  gdb = spawn('gdb', [ '-i', 'mi' ]);
+  gdb.on('close', function(code) {
+    //console.log('gdb exited with code '+code);
+    me.kill();
+  });
+  gdb.stdout.on("data", function(data) {
+    //console.log("gdb-out "+data);
+    me.emit("gdb-out", data);
+  });
+  gdb.stderr.on("data", function(data) {
+    //console.log("gdb-err "+data);
+    me.emit("gdb-err", data);
+  });
+
+  // we can call this now
+  _readyHandler();
   
 }
 
 
-module.exports = gdbExec;
+exports.gdbExec = gdbExec;

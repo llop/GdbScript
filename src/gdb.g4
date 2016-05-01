@@ -71,11 +71,17 @@ objectProp : ID ':' expr ;
 //   - user-defined functions -> a lits of arguments in parenthesis (possibly empty)
 funCall : 'write' '(' expr? ')'                                     # WriteCall
 
-        | 'onDebugOutput' '(' expr ')'                              # OnDebugOutputCall
-        | 'onAppOutput' '(' expr ')'                                # OnAppOutputCall
-        | 'onExecStateChange' '(' expr ')'                          # OnExecStateChangeCall
+        | 'debugOut' '(' expr ')'                                   # OnDebugOutputCall
 
-        | 'debug' '(' expr ')'                                      # DebugCall
+        | 'debug' '(' expr ')'                                      # DbgRunCall
+        | 'stop' '(' ')'                                            # DbgStopCall
+        | 'pause' '(' ')'                                           # DbgPauseCall
+        | 'cont' '(' ')'                                            # DbgContCall
+
+        | 'break' '(' expr ')'                                      # DbgBreakInsCall
+        | 'breakDel' '(' expr ')'                                   # DbgBreakRemCall
+
+        | 'vars' '(' ')'                                            # DbgVarsCall
 
         | FUNC params '{' blockInstructions '}' '(' exprList? ')'   # AnonFuncCall
         | ID '(' exprList? ')'                                      # UserDefinedFuncCall

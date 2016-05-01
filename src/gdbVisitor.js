@@ -217,18 +217,38 @@ gdbVisitor.prototype.visitOnDebugOutputCall = function(ctx) {
 };
 
 
-// Visit a parse tree produced by gdbParser#OnAppOutputCall.
-gdbVisitor.prototype.visitOnAppOutputCall = function(ctx) {
+// Visit a parse tree produced by gdbParser#DbgRunCall.
+gdbVisitor.prototype.visitDbgRunCall = function(ctx) {
 };
 
 
-// Visit a parse tree produced by gdbParser#OnExecStateChangeCall.
-gdbVisitor.prototype.visitOnExecStateChangeCall = function(ctx) {
+// Visit a parse tree produced by gdbParser#DbgStopCall.
+gdbVisitor.prototype.visitDbgStopCall = function(ctx) {
 };
 
 
-// Visit a parse tree produced by gdbParser#DebugCall.
-gdbVisitor.prototype.visitDebugCall = function(ctx) {
+// Visit a parse tree produced by gdbParser#DbgPauseCall.
+gdbVisitor.prototype.visitDbgPauseCall = function(ctx) {
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgContCall.
+gdbVisitor.prototype.visitDbgContCall = function(ctx) {
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgBreakInsCall.
+gdbVisitor.prototype.visitDbgBreakInsCall = function(ctx) {
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgBreakRemCall.
+gdbVisitor.prototype.visitDbgBreakRemCall = function(ctx) {
+};
+
+
+// Visit a parse tree produced by gdbParser#DbgVarsCall.
+gdbVisitor.prototype.visitDbgVarsCall = function(ctx) {
 };
 
 
