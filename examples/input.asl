@@ -99,33 +99,7 @@ if not true {
 } else {
   sat = i;
 }
-
-// we saw the predefined function 'write', but there are others to help us debug
-// the debugger operates in asyncronous mode, so first of all 
-// we need some callback functions to handle output resulting from the debug session
-
-// whenever the debugger outputs anything, this function will be called
-// the passed function must accept 1 argument, which will be the debugger's output
-onDebugOutput(function(data) {
-  write("debug " + data);
-});
-
-// whenever the application outputs anything, this function will be called
-// the passed function must accept 1 argument, which will be the app's output
-onAppOutput(function(data) {
-  write("app " + data);
-});
-
-// whenever the debugger changes execution state (ie, it pauses because it hit a breakpoint)
-// this function will be called; it must have an argument: the debugger's state
-onExecStateChange(function(data) {
-  write("state change " + data);
-});
-
-// suppose your C++ code is in a file called 'main.cc'
-// this will start the debug session
-debug("main.cc");
-
+write(sat);
 
 
 /*
@@ -161,29 +135,7 @@ Output for the above script:
 >> eat pizza now!
 >> eat chips now!
 >> eat whale now!
->> onDebugOutput function set
->> onAppOutputCall function set
->> onExecStateChangeCall function set
->> starting debug session
+>> 3
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
